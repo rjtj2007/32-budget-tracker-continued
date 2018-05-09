@@ -1,0 +1,11 @@
+{
+  "name": "lab-ryan",
+  "version": "1.0.0",
+  "description": "## Created by Ryan Johnson ### Collaborators Amber Kim, Alicia Lycan",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
