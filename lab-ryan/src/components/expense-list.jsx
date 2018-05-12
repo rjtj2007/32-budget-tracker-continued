@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CategoryItem from './category-item.jsx';
+import ExpenseItem from './expense-item.jsx';
 import { combineReducers } from 'redux';
-import { categoryCreate, categoryUpdate, categoryDestroy } from '../actions/category-actions.js';
+import { expenseCreate, expenseUpdate, expenseDestroy } from '../actions/expense-actions.js';
 
 
 class CategoryList extends React.Component {
@@ -15,16 +15,19 @@ class CategoryList extends React.Component {
 
     displayAll() {
         console.log('displayAll', this.props.categories);
-        return this.props.categories.map(category => {
-            return <CategoryItem 
-            key={category.id} //ensure the key is declared in the collection and not on props
-            id={category.id}
-            categoryUpdate={this.props.categoryUpdate}
-            categoryDestroy={this.props.categoryDestroy}
-            name={category.name}
-            budget={category.budget}
-            isEditing={category.isEditing}>
-            </CategoryItem>
+        return this.props.expenses.map((expense, i) => {
+            if(this.props.catetoryId === expenses.categoryId) {
+                return <ExpenseItem 
+                key={i} //ensure the key is declared in the collection and not on props
+                id={expense.id}
+                categoryId={expense.categoryId}
+                // expenseUpdate={this.props.expenseUpdate}
+                // expenseDestroy={this.props.expenseDestroy}
+                name={expense.name}
+                number={expense.number}
+                isEditing={expense.isEditing}>
+                </ExpenseItem>
+            }
         });
     }
 
@@ -39,15 +42,15 @@ class CategoryList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    categories: state.categories.categories,
+    expenses: state.expenses.expenses,
 });
 
 const mapDispatchToProps = (dispatch, getState) => {
     return {
-        categoryCreate: value => dispatch(categoryCreate(value)),
+        expenseCreate: value => dispatch(expenseCreate(value)),
         // categoryUpdate: value => dispatch(categoryUpdate(value)),
         // categoryDestroy: id => dispatch(categoryDestroy(id))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryList);
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseList);

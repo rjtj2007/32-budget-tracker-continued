@@ -62,7 +62,7 @@ class ExpenseForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    categories: state.categories.categories
+    expenses: state.expenses.expenses
 });
 
 const mapDispatchToProps = (dispatch, getState) => {
