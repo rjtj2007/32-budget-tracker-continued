@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {
-    categoryCreate,
-    categoryUpdate,
-} from '../actions/category-actions.js'
+// import {connect} from 'react-redux';
+// import {
+//     categoryCreate,
+//     categoryUpdate,
+// } from '../actions/category-actions.js';
 
 class CategoryForm extends React.Component {
     constructor(props) {
@@ -59,15 +59,15 @@ class CategoryForm extends React.Component {
 }
 
 //not needed in the form if contained in the dashboard
-const mapStateToProps = state => ({
-    categories: state.categories
-});
+// const mapStateToProps = state => ({
+//     categories: state.categories
+// });
 
-const mapDispatchToProps = (dispatch, getState) => {
-    return {
-        categoryCreate: value => dispatch(categoryCreate(value)),
-        categoryUpdate: value => dispatch(categoryUpdate(value)),
-    }
-}
+// const mapDispatchToProps = (dispatch, getState) => {
+//     return {
+//         categoryCreate: value => dispatch(categoryCreate(value)),
+//         categoryUpdate: value => dispatch(categoryUpdate(value)),
+//     }
+// }
 
 export default connect(mapStateToProps,mapDispatchToProps)(CategoryForm);

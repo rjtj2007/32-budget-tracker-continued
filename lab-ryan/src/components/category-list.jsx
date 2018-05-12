@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CategoryItem from './category-item.jsx';
-import { categoryCreate } from '../actions/category-actions.js';
+import { categoryCreate, categoryUpdate, categoryDestroy } from '../actions/category-actions.js';
+
 
 class CategoryList extends React.Component {
     constructor(props) {
@@ -14,10 +15,12 @@ class CategoryList extends React.Component {
     displayAll() {
         return this.props.categories.map(category => {
             return <CategoryItem 
-            key={category.id} 
-            id={category.id} 
-            name={category.name} 
-            budget={category.budget} 
+            key={category.id} //ensure the key is declared in the collection and not on props
+            id={category.id}
+            categoryUpdate={this.props.categoryUpdate}
+            categoryDestroy={this.props.categoryDestroy}
+            name={category.name}
+            budget={category.budget}
             isEditing={category.isEditing}>
             </CategoryItem>
         });
@@ -40,6 +43,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, getState) => {
     return {
         categoryCreate: value => dispatch(categoryCreate(value)),
+        categoryUpdate: value => dispatch(categoryUpdate(value)),
+        categoryDestroy: id => dispatch(categoryDestroy(id))
     }
 }
 

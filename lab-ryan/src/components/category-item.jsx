@@ -1,9 +1,4 @@
 import React from 'react';
-import{connect} from 'react-redux';
-import {
-    categoryUpdate,
-    categoryDestroy,
-} from '../actions/category-actions.js';
 
 import CategoryForm from './category-form.jsx';
 
@@ -40,7 +35,7 @@ class CategoryItem extends React.Component {
             )
         }
         return (
-            <li key={this.props.key}>
+            <li>
             {this.props.name}: ${this.props.budget}
             <button onClick={(event)=>this.handleRemove(event, categoryId)}>Remove</button>
             <button onClick={(event)=>this.toggleEdit(event, categoryId)}>Edit</button>
@@ -49,15 +44,4 @@ class CategoryItem extends React.Component {
     }
 }
 
-const mapSateToProps = state => ({
-    categories: state.categories
-});
-
-const mapDispatchToProps = (dispatch, getState) => {
-    return {
-        categoryUpdate: (values) => dispatch(categoryUpdate(values)),
-        categoryDestroy: id => dispatch(categoryDestroy(id)),
-    }
-}
-
-export default connect(mapSateToProps, mapDispatchToProps)(CategoryItem);
+export default CategoryItem;
