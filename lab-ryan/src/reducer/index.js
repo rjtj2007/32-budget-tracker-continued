@@ -4,6 +4,6 @@ import categoryApp from './category-app.jsx';
 import expenseApp from './expense-app.jsx';
 
 export default combineReducers ({
-    silly: categoryApp,
+    categories: categoryApp,
     expenses: expenseApp
 });

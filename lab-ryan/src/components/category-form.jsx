@@ -56,9 +56,8 @@ class CategoryForm extends React.Component {
     }
 }
 
-// not needed in the form if contained in the dashboard
 const mapStateToProps = state => ({
-    categories: state.silly.categories
+    categories: state.categories.categories
 });
 
 const mapDispatchToProps = (dispatch, getState) => {
