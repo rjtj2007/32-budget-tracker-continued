@@ -3,9 +3,9 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import categoryAppReducer from '../reducer/category-app.jsx';
+import reducers from '../reducer/';
 
-const store = createStore(categoryAppReducer);
+const store = createStore(reducers);
 
 import Dashboard from './dashboard.jsx';
 
