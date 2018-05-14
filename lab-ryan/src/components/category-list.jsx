@@ -45,8 +45,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, getState) => {
     return {
         categoryCreate: value => dispatch(categoryCreate(value)),
-        // categoryUpdate: value => dispatch(categoryUpdate(value)),
-        // categoryDestroy: id => dispatch(categoryDestroy(id))
+        categoryUpdate: value => dispatch(categoryUpdate(value)),
+        categoryDestroy: id => dispatch(categoryDestroy(id))
     }
 }
 

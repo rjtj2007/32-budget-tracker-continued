@@ -2,7 +2,6 @@ import React from 'react';
 
 import CategoryForm from './category-form.jsx';
 import ExpenseForm from './expense-form.jsx';
-// import ExpenseList from './expense-list.jsx';
 
 class CategoryItem extends React.Component {
     constructor(props) {
@@ -28,6 +27,7 @@ class CategoryItem extends React.Component {
 
     render() {
         const categoryId = this.props.id;
+        console.log('cat-item render', categoryId);
         if(this.props.isEditing === true) {
             return (
                 <div>

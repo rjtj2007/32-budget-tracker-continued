@@ -21,10 +21,10 @@ class CategoryList extends React.Component {
                 key={i} //ensure the key is declared in the collection and not on props
                 id={expense.id}
                 categoryId={expense.categoryId}
-                // expenseUpdate={this.props.expenseUpdate}
-                // expenseDestroy={this.props.expenseDestroy}
+                expenseUpdate={this.props.expenseUpdate}
+                expenseDestroy={this.props.expenseDestroy}
                 name={expense.name}
-                number={expense.number}
+                budget={expense.budget}
                 isEditing={expense.isEditing}>
                 </ExpenseItem>
             }
@@ -48,8 +48,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, getState) => {
     return {
         expenseCreate: value => dispatch(expenseCreate(value)),
-        // categoryUpdate: value => dispatch(categoryUpdate(value)),
-        // categoryDestroy: id => dispatch(categoryDestroy(id))
+        expenseUpdate: value => dispatch(expenseUpdate(value)),
+        expenseDestroy: id => dispatch(expenseDestroy(id))
     }
 }
 

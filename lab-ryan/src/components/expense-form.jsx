@@ -13,10 +13,10 @@ class ExpenseForm extends React.Component {
         super(props);
         this.state = {
             name: '',
-            number: 0,
+            budget: 0,
             timestamp: Date.now(),
             categoryId: this.props.categoryId,
-            isEditing: false
+            isEditing: false,
         }
        this.handleNameChange = this.handleNameChange.bind(this);
        this.handleBudgetChange = this.handleBudgetChange.bind(this);
@@ -54,7 +54,7 @@ class ExpenseForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
             <h3>Enter a new Budget Item</h3>
                 <input onChange={this.handleNameChange} name="name" type="text" placeholder="expense name" required="true"/>
-                <input onChange={this.handleBudgetChange} name="budget" type="text" placeholder="number" required="true"/>
+                <input onChange={this.handleBudgetChange} name="budget" type="text" placeholder="budget" required="true"/>
                 <button type="submit">Submit</button>
             </form>
         )

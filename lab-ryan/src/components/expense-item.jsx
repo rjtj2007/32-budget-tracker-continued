@@ -36,7 +36,7 @@ class ExpenseItem extends React.Component {
         }
         return (
             <li>
-            {this.props.name}: ${this.props.number}
+            {this.props.name}: ${this.props.budget}
             <button id={this.props.id} onClick={(event)=>this.handleRemove(event, expenseId)}>Remove</button>
             <button id={this.props.id} onClick={(event)=>this.toggleEdit(event, expenseId)}>Edit</button>
             </li>

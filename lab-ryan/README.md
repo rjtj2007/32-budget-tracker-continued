@@ -1,18 +1,18 @@
-# Lab 31 React/Redux Budget Trcker
+# Lab 32 Budget Trcker Combine Reducers
 
 ## Created by Ryan Johnson
-### Collaborators Amber Kim, Alicia Lycan
 
 ##  Descriptsion
-This application creates a simple budget tracker that is able to create, update and destroy individual budget items. 
+This application creates a simple budget tracker that is able to create, update and destroy individual budget items for both category and budget related items. 
 
 ## Technologies
 * JavaScript
 * ReactJS
+* React Router
+* NodeJS
 * Redux
 * Webpack
 * SASS
-* npm libraries
 
 ## How to Use
 * clone the repo to your local directory

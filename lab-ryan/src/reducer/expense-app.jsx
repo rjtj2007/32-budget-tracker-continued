@@ -38,8 +38,8 @@ export default function expenseReducer(state, action) {
             if(action.value.name) {
                 currentExpenses[expenseIndex].name = action.value.name;
             }
-            if(action.values.number) {
-                currentExpenses[expense.Index].number = action.value.number;
+            if(action.values.budget) {
+                currentExpenses[expense.Index].budget = action.value.budget;
             }
             return Object.assign(newState, state, {expenses: currentExpenses});
         
