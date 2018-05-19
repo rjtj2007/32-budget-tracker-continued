@@ -7,7 +7,7 @@ import reducers from '../reducer/';
 
 const store = createStore(reducers);
 
-import Dashboard from './dashboard.jsx';
+import Main from './mainPage.jsx';
 
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
         return(
             <Provider store={store}>
                 <BrowserRouter>
-                    <Route exact path='/' component={Dashboard} />
+                    <Route exact path='/' component={Main} />
                 </BrowserRouter>
             </Provider>
         )

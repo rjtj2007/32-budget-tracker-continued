@@ -10,9 +10,11 @@ const origionalState = {
 }
 
 export default function expenseReducer(state, action) {
+    
     if(state === undefined) {
         return origionalState;
     }
+    
     let newState = {};
     let currentExpenses;
     let expenseIndex;

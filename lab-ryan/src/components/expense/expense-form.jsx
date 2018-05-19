@@ -1,17 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    categoryCreate,
-    categoryUpdate,
-} from '../actions/category-actions.js';
+    expenseCreate,
+    expenseUpdate,
+    expenseDestroy
+} from '../../actions/expense-actions.js';
 
-class CategoryForm extends React.Component {
+import uuidv1 from 'uuid/v1';
+
+class ExpenseForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
             budget: 0,
-            isEditing: false
+            timestamp: Date.now(),
+            categoryId: this.props.categoryId,
+            isEditing: false,
         }
        this.handleNameChange = this.handleNameChange.bind(this);
        this.handleBudgetChange = this.handleBudgetChange.bind(this);
@@ -37,19 +42,28 @@ class CategoryForm extends React.Component {
         let submitFormName = this.props.name;
         event.preventDefault();
         if(this.props.name === 'create') {
-            this.props.categoryCreate(this.state);
+            this.props.expenseCreate(this.state);
         } else if (this.props.name === 'update') {
             let newValue = Object.assign(this.state, {isEditing: false, id: this.props.id});
-            this.props.categoryUpdate(this.state);
+            this.props.expenseUpdate(this.state);
         }
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-            <h3>Enter a new Budget Item</h3>
-                <input onChange={this.handleNameChange} name="name" type="text" placeholder="category name" required="true"/>
-                <input onChange={this.handleBudgetChange} name="budget" type="text" placeholder="budget" required="true"/>
+                <input onChange={this.handleNameChange} 
+                    name="name" 
+                    type="text" 
+                    placeholder="name" 
+                    value={this.state.name}
+                />
+                <input onChange={this.handleBudgetChange} 
+                    name="budget" 
+                    type="text" 
+                    placeholder="budget" 
+                    value={this.state.budget}
+                />
                 <button type="submit">Submit</button>
             </form>
         )
@@ -57,14 +71,14 @@ class CategoryForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    categories: state.categories.categories
+    expenses: state.expenses.expenses
 });
 
 const mapDispatchToProps = (dispatch, getState) => {
     return {
-        categoryCreate: value => dispatch(categoryCreate(value)),
-        categoryUpdate: value => dispatch(categoryUpdate(value)),
+        expenseCreate: value => dispatch(expenseCreate(value)),
+        expenseUpdate: value => dispatch(expenseUpdate(value)),
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CategoryForm);
+export default connect(mapStateToProps,mapDispatchToProps)(ExpenseForm);

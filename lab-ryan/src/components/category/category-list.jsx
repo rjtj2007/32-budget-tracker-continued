@@ -1,29 +1,39 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import CategoryItem from './category-item.jsx';
 import { combineReducers } from 'redux';
-import { categoryCreate, categoryUpdate, categoryDestroy } from '../actions/category-actions.js';
+import { categoryCreate, categoryUpdate, categoryDestroy } from '../../actions/category-actions.js';
 
 
 class CategoryList extends React.Component {
     constructor(props) {
         super(props);
 
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.displayAll = this.displayAll.bind(this);
     }
 
+    handleUpdate(category) {
+        this.props.categoryUpdate(category);
+    }
+
+    handleDelete(category) {
+        this.props.categoryDestroy(category);
+    }
+
     displayAll() {
-        console.log('displayAll', this.props.categories);
+        // console.log('displayAll', this.props.categories);
         return this.props.categories.map(category => {
             return <CategoryItem 
-            key={category.id} //ensure the key is declared in the collection and not on props
-            id={category.id}
-            categoryUpdate={this.props.categoryUpdate}
-            categoryDestroy={this.props.categoryDestroy}
-            name={category.name}
-            budget={category.budget}
-            isEditing={category.isEditing}>
+                key={category.id} //ensure the key is declared in the collection and not on props
+                id={category.id}
+                name={category.name}
+                budget={category.budget}
+                categoryUpdate={this.handleUpdate}
+                categoryDestroy={this.handleDelete}
+                isEditing={category.isEditing}>
             </CategoryItem>
         });
     }
