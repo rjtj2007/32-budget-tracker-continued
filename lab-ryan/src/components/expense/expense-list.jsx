@@ -15,7 +15,7 @@ class ExpenseList extends React.Component {
     }
 
     handleDelete(expenseId) {
-        this.props.expenseDelete(expenseId);
+        this.props.expenseDestroy(this.expenseId);
     }
 
     displayAllExpenses() {

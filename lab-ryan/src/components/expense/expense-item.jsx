@@ -44,7 +44,7 @@ class ExpenseItem extends React.Component {
                         name={this.props.name}
                         budget={this.props.budget}
                         toggleEdit={this.toggleEdit}
-                        cancel={this.cancel}>                    >
+                        cancel={this.cancel}>
                     </ExpenseForm>
                     <button onClick={(event)=>this.cancel(event, expenseId)}>Cancel</button>
                 </li>
