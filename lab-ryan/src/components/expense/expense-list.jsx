@@ -26,7 +26,7 @@ class ExpenseList extends React.Component {
         });
 
             return list.map(expense => {
-        //     if(this.props.catetoryId === expenses.categoryId) {
+            if(this.props.catetoryId === expense.categoryId) {
                 return <ExpenseItem 
                     categoryId={this.props.categoryId}
                     key={expense.id} //ensure the key is declared in the collection and not on props
@@ -36,7 +36,8 @@ class ExpenseList extends React.Component {
                     delete={this.handleDelete}
                     toggleEdit={expense.toggleEdit}>
                 </ExpenseItem>
-            });
+            }
+        });
     }
 
     render() {

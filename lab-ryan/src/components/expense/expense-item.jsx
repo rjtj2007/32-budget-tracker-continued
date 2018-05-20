@@ -32,14 +32,14 @@ class ExpenseItem extends React.Component {
     }
 
     render() {
-        // const expenseId = this.props.id;
+        const expenseId = this.props.id;
         console.log('expense item render props.id', this.props.id)
 
         if(this.state.isEditing === true) {
             return (
                 <li>
-                    <ExpenseForm action="update"
-                        buttonText="update"
+                    <ExpenseForm action="create"
+                        buttonText="create"
                         id={this.props.id}
                         name={this.props.name}
                         budget={this.props.budget}
@@ -63,7 +63,7 @@ class ExpenseItem extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { expenses: state.expense.expenses };
+    return { expenses: state.expenses.expenses };
   };
   
   const mapDispatchToProps = dispatch => {

@@ -24,7 +24,6 @@ class CategoryList extends React.Component {
     }
 
     displayAll() {
-        // console.log('displayAll', this.props.categories);
         return this.props.categories.map(category => {
             return <CategoryItem 
                 key={category.id} //ensure the key is declared in the collection and not on props

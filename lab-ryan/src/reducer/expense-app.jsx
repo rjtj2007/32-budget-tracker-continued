@@ -31,15 +31,11 @@ export default function expenseReducer(state, action) {
         case EXPENSE_UPDATE:
 
             currentExpenses = state.expenses.slice();
-            console.log('action', action)
-
             let expenseToUpdate = currentExpenses.find(expense => {
                 return expense.id === action.value.id;
             });
 
-            console.log('expenseToUpdate in update', expenseToUpdate)
             expenseIndex = currentExpenses.indexOf(expenseToUpdate);
-            // currentExpenses[expenseIndex].isEditing = !currentExpenses[expenseIndex].isEditing;
             if(action.value.name) {
                 currentExpenses[expenseIndex].name = action.value.name;
             }
