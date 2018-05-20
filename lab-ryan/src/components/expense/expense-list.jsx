@@ -19,9 +19,12 @@ class ExpenseList extends React.Component {
     }
 
     displayAllExpenses() {
+        console.log('expense list', this.props.expenses)
+
         let list = this.props.expenses.filter(expense => {
            return expense.categoryId === this.props.categoryId
         });
+
             return list.map(expense => {
         //     if(this.props.catetoryId === expenses.categoryId) {
                 return <ExpenseItem 
