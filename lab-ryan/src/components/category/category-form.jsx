@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import {
     categoryCreate,
     categoryUpdate,
-} from '../actions/category-actions.js';
+} from '../../actions/category-actions.js';
 
 class CategoryForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            timestamp: new Date(),
             name: '',
             budget: 0,
             isEditing: false
@@ -34,11 +35,14 @@ class CategoryForm extends React.Component {
 
 
     handleSubmit(event) {
-        let submitFormName = this.props.name;
         event.preventDefault();
+        console.log('handleSubmit', this.state)
+
+        let submitFormName = this.props.name;
         if(this.props.name === 'create') {
             this.props.categoryCreate(this.state);
-        } else if (this.props.name === 'update') {
+        }
+        if (this.props.name === 'update') {
             let newValue = Object.assign(this.state, {isEditing: false, id: this.props.id});
             this.props.categoryUpdate(this.state);
         }
@@ -48,11 +52,19 @@ class CategoryForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
             <h3>Enter a new Budget Item</h3>
-                <input onChange={this.handleNameChange} name="name" type="text" placeholder="category name" required="true"/>
-                <input onChange={this.handleBudgetChange} name="budget" type="text" placeholder="budget" required="true"/>
+                <input onChange={this.handleNameChange} 
+                name="name" 
+                type="text" 
+                placeholder="category name" 
+                />
+                <input onChange={this.handleBudgetChange} 
+                name="budget" 
+                type="text" 
+                placeholder="budget" 
+                />
                 <button type="submit">Submit</button>
             </form>
-        )
+        );
     }
 }
 
@@ -64,7 +76,7 @@ const mapDispatchToProps = (dispatch, getState) => {
     return {
         categoryCreate: value => dispatch(categoryCreate(value)),
         categoryUpdate: value => dispatch(categoryUpdate(value)),
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(CategoryForm);

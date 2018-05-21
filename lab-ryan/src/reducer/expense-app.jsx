@@ -10,9 +10,11 @@ const origionalState = {
 }
 
 export default function expenseReducer(state, action) {
+    
     if(state === undefined) {
         return origionalState;
     }
+
     let newState = {};
     let currentExpenses;
     let expenseIndex;
@@ -22,7 +24,7 @@ export default function expenseReducer(state, action) {
         case EXPENSE_CREATE:
 
             currentExpenses = state.expenses.slice();
-            let newExpense = Object.assign({}, {id: uuidv1(), isEditing: false}, action.value);
+            let newExpense = Object.assign({}, {id: uuidv1()});
             currentExpenses.push(newExpense);
             return Object.assign(newState, state, {expenses: currentExpenses});
         
@@ -34,7 +36,6 @@ export default function expenseReducer(state, action) {
             });
 
             expenseIndex = currentExpenses.indexOf(expenseToUpdate);
-            currentExpenses[expenseIndex].isEditing = !currentExpenses[expenseIndex].isEditing;
             if(action.value.name) {
                 currentExpenses[expenseIndex].name = action.value.name;
             }

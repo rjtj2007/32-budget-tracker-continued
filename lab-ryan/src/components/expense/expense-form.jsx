@@ -4,7 +4,7 @@ import {
     expenseCreate,
     expenseUpdate,
     expenseDestroy
-} from '../actions/expense-actions.js';
+} from '../../actions/expense-actions.js';
 
 import uuidv1 from 'uuid/v1';
 
@@ -14,6 +14,7 @@ class ExpenseForm extends React.Component {
         this.state = {
             name: '',
             budget: 0,
+            id: this.props.id,
             timestamp: Date.now(),
             categoryId: this.props.categoryId,
             isEditing: false,
@@ -39,8 +40,8 @@ class ExpenseForm extends React.Component {
 
 
     handleSubmit(event) {
-        let submitFormName = this.props.name;
         event.preventDefault();
+        let submitFormName = this.props.name;
         if(this.props.name === 'create') {
             this.props.expenseCreate(this.state);
         } else if (this.props.name === 'update') {
@@ -52,9 +53,18 @@ class ExpenseForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-            <h3>Enter a new Budget Item</h3>
-                <input onChange={this.handleNameChange} name="name" type="text" placeholder="expense name" required="true"/>
-                <input onChange={this.handleBudgetChange} name="budget" type="text" placeholder="budget" required="true"/>
+                <input onChange={this.handleNameChange} 
+                    name="name" 
+                    type="text" 
+                    placeholder="name" 
+                    value={this.state.name}
+                />
+                <input onChange={this.handleBudgetChange} 
+                    name="budget" 
+                    type="text" 
+                    placeholder="budget" 
+                    value={this.state.budget}
+                />
                 <button type="submit">Submit</button>
             </form>
         )

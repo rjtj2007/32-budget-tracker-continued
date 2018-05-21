@@ -4,10 +4,10 @@ import {Provider} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import reducers from '../reducer/';
+//place redux dev tools just after reducers and before anything else
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-const store = createStore(reducers);
-
-import Dashboard from './dashboard.jsx';
+import Main from './mainPage.jsx';
 
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
         return(
             <Provider store={store}>
                 <BrowserRouter>
-                    <Route exact path='/' component={Dashboard} />
+                    <Route exact path='/' component={Main} />
                 </BrowserRouter>
             </Provider>
         )
